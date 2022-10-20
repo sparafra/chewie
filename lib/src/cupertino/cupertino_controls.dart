@@ -251,7 +251,7 @@ class _CupertinoControlsState extends State<CupertinoControls>
         duration: const Duration(milliseconds: 300),
         child: Container(
           color: Colors.transparent,
-          alignment: Alignment.bottomCenter,
+          alignment: Alignment.center,
           margin: EdgeInsets.all(marginSize),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
