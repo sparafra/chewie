@@ -203,9 +203,14 @@ class _ChewieDemoState extends State<ChewieDemo> {
                                   child: _chewieController != null &&
                                         _chewieController!.videoPlayerController
                                             .value.isInitialized
-                                    ? Chewie(
+                                    ? Theme(
+                                    data: ThemeData.light().copyWith(
+                                      platform: TargetPlatform.iOS,
+                                    ),
+                                    child:Chewie(
                                         controller: _chewieController!,
                                       )
+                                  )
                                     : Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,

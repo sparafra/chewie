@@ -41,7 +41,9 @@ class _CupertinoControlsState extends State<CupertinoControls>
   late VideoPlayerValue _latestValue;
   double? _latestVolume;
   Timer? _hideTimer;
-  final marginSize = 5.0;
+  final marginSizeVert = 50.0;
+  final marginSizeHor = 15.0;
+
   Timer? _expandCollapseTimer;
   Timer? _initTimer;
   bool _dragging = false;
@@ -221,7 +223,7 @@ class _CupertinoControlsState extends State<CupertinoControls>
     }
 
     return Padding(
-      padding: EdgeInsets.only(left: marginSize, right: marginSize),
+      padding: EdgeInsets.only(left: marginSizeHor, right: marginSizeHor),
       child: Container(
         padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
@@ -252,7 +254,7 @@ class _CupertinoControlsState extends State<CupertinoControls>
         child: Container(
           color: Colors.transparent,
           alignment: Alignment.bottomCenter,
-          margin: EdgeInsets.all(marginSize),
+          margin: EdgeInsets.all(marginSizeHor),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: BackdropFilter(
@@ -598,9 +600,9 @@ class _CupertinoControlsState extends State<CupertinoControls>
     return Container(
       height: barHeight,
       margin: EdgeInsets.only(
-        top: marginSize,
-        right: marginSize,
-        left: marginSize,
+        top: marginSizeVert,
+        right: marginSizeHor,
+        left: marginSizeHor,
       ),
       child: Row(
         children: <Widget>[
