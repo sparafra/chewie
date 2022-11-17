@@ -42,7 +42,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
   }
 
   List<String> srcs = [
-    "https://www.itinerando.eu/wp-content/uploads/2022/09/WhatsApp-Video-2022-09-23-at-19.44.24.mp4"
+    "https://www.itinerando.eu/comuni/1_Altomonte/placeOfInterest/1_Santa Maria Della Consolazione/videos/Santa Maria.mov"
   ];
 
   Future<void> initializePlayer() async {
@@ -124,21 +124,9 @@ class _ChewieDemoState extends State<ChewieDemo> {
           ),
         ];
       },
-      subtitle: Subtitles(subtitles),
-      subtitleBuilder: (context, dynamic subtitle) => Container(
-        padding: const EdgeInsets.all(10.0),
-        child: subtitle is InlineSpan
-            ? RichText(
-                text: subtitle,
-              )
-            : Text(
-                subtitle.toString(),
-                style: const TextStyle(color: Colors.black),
-              ),
-      ),
 
       hideControlsTimer: const Duration(seconds: 1),
-
+      //aspectRatio: 9/16
       // Try playing around with some of these other options:
 
       // showControls: false,
@@ -168,15 +156,14 @@ class _ChewieDemoState extends State<ChewieDemo> {
 
   @override
   Widget build(BuildContext context) {
+    print(_chewieController!.aspectRatio);
     return MaterialApp(
       title: widget.title,
       theme: AppTheme.light.copyWith(
         platform: _platform ?? Theme.of(context).platform,
       ),
       home: Scaffold(
-          appBar: AppBar(
-            title: Text(widget.title),
-          ),
+
           body: LayoutBuilder(builder: (BuildContext context, BoxConstraints viewportConstraints) {
             return Container(
 
@@ -192,13 +179,82 @@ class _ChewieDemoState extends State<ChewieDemo> {
 
                       Column(
                           //mainAxisAlignment: MainAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
+                          mainAxisSize: MainAxisSize.max,
                           //display event name, start/end dates times and duration in a column
                           children: [
-                           /* Expanded(
-                                child:*/  Container(
-                                  //height: MediaQuery.of(context).size.height/1.4,
-                                  height: MediaQuery.of(context).size.height,
+                            /*
+                  Flexible(
+                  child: Stack(
+                  children: [
+                      Container(
+                      height: MediaQuery.of(context).size.height/1.4,
+                      //height: 1200,
+                      width: double.infinity,
+                      child: _chewieController!.videoPlayerController.value.isInitialized ?
+                      ClipRect(
+                          child: OverflowBox(
+                              maxWidth: double.infinity,
+                              maxHeight: double.infinity,
+                              alignment: Alignment.center,
+                              child: FittedBox(
+                                  fit: BoxFit.cover,
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                      color: Colors.white,
+                                      width: MediaQuery.of(context).size.width,
+                                      height: MediaQuery.of(context).size.height,
+                                      child: Theme(
+                                          data: ThemeData.light().copyWith(
+                                            platform: TargetPlatform.iOS,
+                                          ),
+                                          child:Chewie(
+                                        controller: _chewieController!,
+                                      )
+                                      )
+                                  )
+                              )
+                          )
+                      )
+                          :
+                      Center(child:
+                      SizedBox(
+                        height: 50.0,
+                        width: 50.0,
+                        child: CircularProgressIndicator(),)
+                      ),
+
+                      //)
+                    ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment:
+                    CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                            20, 40, 0, 0),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  ],
+                ))]),
+                            */
+
+                          Container(
+                                  //height: MediaQuery.of(context).size.height,
+                                  //height: _chewieController!.videoPlayerController.value.size.height/_chewieController!.videoPlayerController.value.size.aspectRatio,
+                                  color: Colors.black,
                                   width: MediaQuery.of(context).size.width,
                                   child: _chewieController != null &&
                                         _chewieController!.videoPlayerController
@@ -220,7 +276,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
                                           Text('Loading'),
                                         ],
                                       ),
-                                //)
+
 
                             ),
                           ]),

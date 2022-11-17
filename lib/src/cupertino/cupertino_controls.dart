@@ -41,7 +41,7 @@ class _CupertinoControlsState extends State<CupertinoControls>
   late VideoPlayerValue _latestValue;
   double? _latestVolume;
   Timer? _hideTimer;
-  final marginSizeVert = 50.0;
+  final marginSizeVert = 55.0;
   final marginSizeHor = 15.0;
 
   Timer? _expandCollapseTimer;
