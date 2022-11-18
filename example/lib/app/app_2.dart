@@ -42,7 +42,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
   }
 
   List<String> srcs = [
-    "https://www.itinerando.eu/comuni/1_Altomonte/placeOfInterest/1_Santa Maria Della Consolazione/videos/Santa Maria.mov"
+    "https://www.itinerando.eu/comuni/1_Altomonte/placeOfInterest/1_Santa_Maria_Della_Consolazione/videos/Santa_Maria.mov"
   ];
 
   Future<void> initializePlayer() async {

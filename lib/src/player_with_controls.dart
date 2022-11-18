@@ -17,8 +17,10 @@ class PlayerWithControls extends StatelessWidget {
       final width = size.width;
       final height = size.height;
       print("RATIO");
-      print(width/height);
-      print(chewieController.videoPlayerController.value.aspectRatio);
+      print(height);
+      print(MediaQuery.of(context).devicePixelRatio*height);
+      print((MediaQuery.of(context).devicePixelRatio*height/(chewieController.videoPlayerController.value.size.height)));
+      print(chewieController.videoPlayerController.value.size.height);
       return width > height ? width / height : height / width;
     }
 
@@ -89,7 +91,8 @@ class PlayerWithControls extends StatelessWidget {
 
     return Center(
       child: SizedBox(
-        height: MediaQuery.of(context).size.height/1.15,
+        //height: MediaQuery.of(context).size.height/1.15,
+        height: MediaQuery.of(context).size.height/(MediaQuery.of(context).devicePixelRatio*MediaQuery.of(context).size.height/(chewieController.videoPlayerController.value.size.height)),
         width: MediaQuery.of(context).size.width,
         child: AspectRatio(
           aspectRatio: calculateAspectRatio(context),
